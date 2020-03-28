@@ -21,7 +21,19 @@
 
 	<properties>
 		<java.version>14</java.version>
+		<mybatis-spring-boot-starter.version>2.1.2</mybatis-spring-boot-starter.version>
 	</properties>
+
+	<!--申明依赖-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot-starter.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<!--maven 多环境-->
 	<profiles>
