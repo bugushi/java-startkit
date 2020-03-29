@@ -1,16 +1,16 @@
 package com.example.demo.user.dao;
 
-import com.example.demo.user.po.User;
+import com.example.demo.user.entity.UserEntity;
 import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    int insert(UserEntity record);
 
-    User selectByPrimaryKey(Integer id);
+    UserEntity selectByPrimaryKey(Integer id);
 
-    List<User> selectAll();
+    List<UserEntity> selectAll();
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserEntity record);
 }
