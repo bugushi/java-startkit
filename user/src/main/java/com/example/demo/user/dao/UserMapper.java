@@ -1,6 +1,9 @@
 package com.example.demo.user.dao;
 
 import com.example.demo.user.entity.UserEntity;
+import com.example.demo.user.vo.UserVO;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -10,7 +13,7 @@ public interface UserMapper {
 
     UserEntity selectByPrimaryKey(Integer id);
 
-    List<UserEntity> selectAll();
+    List<UserEntity> selectAll(UserVO userVO);
 
     int updateByPrimaryKey(UserEntity record);
 }

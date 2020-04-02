@@ -1,9 +1,10 @@
-package com.example.demo.user.entity;
+package com.example.demo.user.vo;
 
+import com.example.demo.user.vo.result.Paged;
 import lombok.Data;
 
 @Data
-public class UserEntity {
+public class UserVO extends Paged {
     private Integer id;
 
     private String userName;

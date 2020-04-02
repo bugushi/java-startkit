@@ -34,3 +34,7 @@ build/
 .mvn
 mvnw
 mvnw.cmd
+
+# system
+.DS_Store
+

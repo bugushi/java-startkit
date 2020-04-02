@@ -1,14 +1,15 @@
-package com.example.demo.user.result;
+package com.example.demo.user.vo.result;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * 分页查询返回数据，用于包装bean
- * Created by bugu on 2020/3/29
+ * 分页查询返回数据，用于包装返回结果
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class PagedResult<T> extends Paged {
 
     private List<T> results;

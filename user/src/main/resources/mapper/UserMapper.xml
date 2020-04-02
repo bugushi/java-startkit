@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.example.demo.user.entity.UserEntity">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="pasword" jdbcType="VARCHAR" property="pasword" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -12,25 +12,26 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.demo.user.entity.UserEntity">
-    insert into user (id, user_name, pasword, 
+    insert into user (id, user_name, password,
       salt)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{pasword,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{salt,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.user.entity.UserEntity">
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
-      pasword = #{pasword,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, user_name, pasword, salt
+    select id, user_name, password, salt
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, user_name, pasword, salt
+  <select id="selectAll" parameterType="com.example.demo.user.vo.UserVO" resultMap="BaseResultMap">
+    select id, user_name, password, salt
     from user
+    where user_name = #{userName, jdbcType=VARCHAR}
   </select>
 </mapper>

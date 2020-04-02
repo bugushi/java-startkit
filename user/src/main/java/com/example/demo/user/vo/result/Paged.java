@@ -1,10 +1,9 @@
-package com.example.demo.user.result;
+package com.example.demo.user.vo.result;
 
 import lombok.Data;
 
 /**
- * 分页基础类，用于被bean继承
- * Created by bugu on 2020/3/29
+ * 分页基础类，用于被查询bean继承
  */
 @Data
 public class Paged {
