@@ -1,15 +1,13 @@
 package com.example.demo.user.vo;
 
-import com.example.demo.user.vo.result.Paged;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @Data
-public class UserVO extends Paged {
+public class UserVO {
+
     private Integer id;
 
     private String userName;
 
-    private String password;
-
-    private String salt;
 }

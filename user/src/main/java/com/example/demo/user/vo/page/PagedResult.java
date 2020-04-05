@@ -1,4 +1,4 @@
-package com.example.demo.user.vo.result;
+package com.example.demo.user.vo.page;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,6 +15,10 @@ public class PagedResult<T> extends Paged {
     private List<T> results;
 
     private long total = 0;
+
+    public PagedResult() {
+
+    }
 
     public PagedResult(Paged paged) {
         this.setPageNo(paged.getPageNo());

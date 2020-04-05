@@ -29,9 +29,24 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" parameterType="com.example.demo.user.vo.UserVO" resultMap="BaseResultMap">
+  <select id="selectAll" parameterType="com.example.demo.user.vo.query.UserQuery" resultMap="BaseResultMap">
     select id, user_name, password, salt
     from user
-    where user_name = #{userName, jdbcType=VARCHAR}
+    <where>
+      <if test="userName != null">
+        and user_name = #{userName, jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="offset != null">
+      limit ${offset}, ${pageSize}
+    </if>
+  </select>
+  <select id="selectCount" parameterType="com.example.demo.user.vo.UserVO" resultType="long">
+    select count(0) from user
+    <where>
+      <if test="userName != null">
+        and user_name = #{userName, jdbcType=VARCHAR}
+      </if>
+    </where>
   </select>
 </mapper>
