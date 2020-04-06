@@ -29,5 +29,18 @@
 - 安装：`brew install redis`
 - 启动：`/usr/local/Cellar/redis/{VERSION}/bin/redis-server`
 
+# 约定
+### Restful
+方法
+- GET: 获取某个资源，GET操作应该是幂等（idempotence）的，且无副作用。
+- POST: 创建一个新的资源。
+- PUT: 修改某个已有的资源。PUT操作虽然有副作用，但其应该是幂等的。
+- DELETE：删除某个资源。DELETE操作有副作用，但也是幂等的。
+
+状态码
+
+
+
+
 
 

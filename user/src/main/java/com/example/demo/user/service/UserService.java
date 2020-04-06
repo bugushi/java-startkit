@@ -2,10 +2,13 @@ package com.example.demo.user.service;
 
 import com.example.demo.user.dao.UserMapper;
 import com.example.demo.user.entity.UserEntity;
+import com.example.demo.user.enums.ApplicationStatus;
+import com.example.demo.user.exception.ApplicationException;
 import com.example.demo.user.vo.UserVO;
+import com.example.demo.user.vo.result.PagedResult;
 import com.example.demo.user.vo.query.RegisterQuery;
 import com.example.demo.user.vo.query.UserQuery;
-import com.example.demo.user.vo.page.PagedResult;
+import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,14 @@ public class UserService {
      * @return
      */
     public boolean register(RegisterQuery registerQuery) {
+
+        UserQuery userQuery = new UserQuery();
+        userQuery.setUserName(registerQuery.getUserName());
+        if (getUser(userQuery) != null) {
+            //用户名已存在
+            throw new ApplicationException(ApplicationStatus.USER_NAME_REPETITION);
+        }
+
         // 生成密码的随机盐
         String salt = UUID.randomUUID().toString();
         UserEntity userEntity = new UserEntity();
@@ -58,9 +69,19 @@ public class UserService {
         PagedResult<UserVO> pagedResult = new PagedResult<>();
         pagedResult.setPageNo(userQuery.getPageNo());
         pagedResult.setPageSize(userQuery.getPageSize());
-        pagedResult.setResults(userVOList);
+        pagedResult.setRows(userVOList);
         pagedResult.setTotal(count);
 
         return pagedResult;
+    }
+
+    /**
+     * 根据用户名查询用户
+     *
+     * @param name
+     * @return
+     */
+    private UserEntity getUser(UserQuery userQuery) {
+        return userMapper.selectOne(userQuery);
     }
 }

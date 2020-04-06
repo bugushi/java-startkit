@@ -1,12 +1,10 @@
 package com.example.demo.user.vo.query;
 
-import com.example.demo.user.vo.page.Paged;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-public class UserQuery extends Paged {
+public class UserQuery extends PagedQuery {
 
     @ApiModelProperty("用户id")
     private Integer id;

@@ -33,6 +33,9 @@
     select id, user_name, password, salt
     from user
     <where>
+      <if test="id != null">
+        and id = #{id, jdbcType=INTEGER}
+      </if>
       <if test="userName != null">
         and user_name = #{userName, jdbcType=VARCHAR}
       </if>
@@ -40,6 +43,19 @@
     <if test="offset != null">
       limit ${offset}, ${pageSize}
     </if>
+  </select>
+  <select id="selectOne" parameterType="com.example.demo.user.vo.query.UserQuery" resultMap="BaseResultMap">
+    select id, user_name, password, salt
+    from user
+    <where>
+      <if test="id != null">
+        and id = #{id, jdbcType=INTEGER}
+      </if>
+      <if test="userName != null">
+        and user_name = #{userName, jdbcType=VARCHAR}
+      </if>
+    </where>
+    limit 1
   </select>
   <select id="selectCount" parameterType="com.example.demo.user.vo.UserVO" resultType="long">
     select count(0) from user

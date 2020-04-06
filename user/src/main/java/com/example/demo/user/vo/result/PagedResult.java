@@ -1,5 +1,6 @@
-package com.example.demo.user.vo.page;
+package com.example.demo.user.vo.result;
 
+import com.example.demo.user.vo.query.PagedQuery;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,9 +11,13 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class PagedResult<T> extends Paged {
+public class PagedResult<T> {
 
-    private List<T> results;
+    private int pageNo;
+
+    private int pageSize;
+
+    private List<T> rows;
 
     private long total = 0;
 
@@ -20,7 +25,7 @@ public class PagedResult<T> extends Paged {
 
     }
 
-    public PagedResult(Paged paged) {
+    public PagedResult(PagedQuery paged) {
         this.setPageNo(paged.getPageNo());
         this.setPageSize(paged.getPageSize());
     }

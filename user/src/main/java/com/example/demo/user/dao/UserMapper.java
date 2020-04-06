@@ -14,6 +14,8 @@ public interface UserMapper {
 
     List<UserEntity> selectAll(UserQuery userQuery);
 
+    UserEntity selectOne(UserQuery userQuery);
+
     int updateByPrimaryKey(UserEntity record);
 
     long selectCount(UserQuery userQuery);

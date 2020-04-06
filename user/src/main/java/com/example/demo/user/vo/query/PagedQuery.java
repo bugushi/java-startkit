@@ -1,14 +1,16 @@
-package com.example.demo.user.vo.page;
+package com.example.demo.user.vo.query;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import springfox.documentation.annotations.ApiIgnore;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 /**
  * 分页基础类，用于被查询bean继承
  */
 @Data
-public class Paged {
+public class PagedQuery {
 
     @ApiModelProperty("当前页")
     private int pageNo = 1;
@@ -31,4 +33,5 @@ public class Paged {
     public int getLimit() {
         return pageSize > 0 ? pageSize : 10;
     }
+
 }
