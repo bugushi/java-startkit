@@ -56,7 +56,7 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.example.demo.user.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.example.demo.user.entity" targetProject="src/main/java">
             <!-- 是否让 schema 作为包的后缀，默认为false -->
             <!--<property name="enableSubPackages" value="false"/>-->
             <!-- 是否针对string类型的字段在set方法中进行修剪，默认false -->
@@ -84,9 +84,6 @@
         <table schema="" tableName="user" domainObjectName="User"
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" selectByExampleQueryId="false">
-            <!--是否使用实际列名,默认为false-->
-            <!--<property name="useActualColumnNames" value="false" />-->
         </table>
-
     </context>
 </generatorConfiguration>

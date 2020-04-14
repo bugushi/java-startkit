@@ -3,66 +3,28 @@
 <mapper namespace="com.example.demo.user.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.user.entity.UserEntity">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="nick" jdbcType="VARCHAR" property="nick" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.user.entity.UserEntity">
-    insert into user (id, user_name, password,
-      salt)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{salt,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.example.demo.user.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
+    insert into user (id, nick)
+    values (#{id,jdbcType=INTEGER}, #{nick,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.user.entity.UserEntity">
     update user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      salt = #{salt,jdbcType=VARCHAR}
+    set nick = #{nick,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, user_name, password, salt
+    select id, nick
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" parameterType="com.example.demo.user.vo.query.UserQuery" resultMap="BaseResultMap">
-    select id, user_name, password, salt
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, nick
     from user
-    <where>
-      <if test="id != null">
-        and id = #{id, jdbcType=INTEGER}
-      </if>
-      <if test="userName != null">
-        and user_name = #{userName, jdbcType=VARCHAR}
-      </if>
-    </where>
-    <if test="offset != null">
-      limit ${offset}, ${pageSize}
-    </if>
-  </select>
-  <select id="selectOne" parameterType="com.example.demo.user.vo.query.UserQuery" resultMap="BaseResultMap">
-    select id, user_name, password, salt
-    from user
-    <where>
-      <if test="id != null">
-        and id = #{id, jdbcType=INTEGER}
-      </if>
-      <if test="userName != null">
-        and user_name = #{userName, jdbcType=VARCHAR}
-      </if>
-    </where>
-    limit 1
-  </select>
-  <select id="selectCount" parameterType="com.example.demo.user.vo.UserVO" resultType="long">
-    select count(0) from user
-    <where>
-      <if test="userName != null">
-        and user_name = #{userName, jdbcType=VARCHAR}
-      </if>
-    </where>
   </select>
 </mapper>

@@ -1,11 +1,17 @@
 # 目录结构
+model层
 - `dao` : 操作数据库的接口
 - `entity`: 表对象，dao返回
+
+服务层
 - `service`: 服务层
-- `dto`(可选): 中间层对象
+- `dto` 服务层接收对象
+- `bo` 服务层返回对象
+
+控制层
 - `controller`：控制层
-- `vo`: 视图对象，controller返回
 - `query` 查询对象，controller从前端接收
+- `vo`: 视图对象，controller返回
 
 # 本地环境
 ### Idea中spring-boot-devtools开启live reload

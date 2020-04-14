@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.user.dao.UserAuthMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.user.entity.UserAuthEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="identity_type" jdbcType="TINYINT" property="identityType" />
+    <result column="identifier" jdbcType="VARCHAR" property="identifier" />
+    <result column="certificate" jdbcType="VARCHAR" property="certificate" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_auth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.user.entity.UserAuthEntity">
+    insert into user_auth (id, user_id, identity_type, 
+      identifier, certificate, salt
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{identityType,jdbcType=TINYINT}, 
+      #{identifier,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.user.entity.UserAuthEntity">
+    update user_auth
+    set user_id = #{userId,jdbcType=INTEGER},
+      identity_type = #{identityType,jdbcType=TINYINT},
+      identifier = #{identifier,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, identity_type, identifier, certificate, salt
+    from user_auth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, identity_type, identifier, certificate, salt
+    from user_auth
+  </select>
+  <select id="selectByAuthInfo" resultMap="BaseResultMap">
+    select id, user_id, identity_type, identifier, certificate, salt
+    from user_auth
+    where
+    identity_type = #{identityType,jdbcType=TINYINT},
+    identifier = #{identifier,jdbcType=VARCHAR}
+  </select>
+</mapper>

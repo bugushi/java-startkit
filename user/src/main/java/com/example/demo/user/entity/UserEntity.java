@@ -6,9 +6,5 @@ import lombok.Data;
 public class UserEntity {
     private Integer id;
 
-    private String userName;
-
-    private String password;
-
-    private String salt;
+    private String nick;
 }
