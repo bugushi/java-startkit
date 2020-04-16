@@ -32,12 +32,13 @@ public class UserServiceImpl implements UserService {
     public boolean register(RegisterDTO registerDTO) {
         // 验证用户是否存在
         boolean isUserAuthExist = checkUserAuthExist(registerDTO.getIdentityType(), registerDTO.getIdentifier());
-        if(!isUserAuthExist) {
+        if(isUserAuthExist) {
             throw new UserException(ErrorCode.USER_ALREADY_EXIST);
         }
 
         // 事务：新增用户、新增用户授权信息
         UserEntity userEntity = new UserEntity();
+        userEntity.setNick(registerDTO.getIdentifier());
         userMapper.insert(userEntity);
 
 

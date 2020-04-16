@@ -21,8 +21,8 @@ CREATE TABLE `user_auth` (
 	`user_id` INT ( 11 ) NOT NULL COMMENT '用户id',
 	`identity_type` TINYINT (4) NOT NULL DEFAULT 1 COMMENT '1用户名 2手机号 3微信',
 	`identifier` VARCHAR (50) NOT NULL DEFAULT '' COMMENT '用户名、手机号或第三方应用的唯一标识',
-	`certificate` VARCHAR ( 20 ) NOT NULL DEFAULT '' COMMENT '密码凭证(站内登陆保存密码，第三方登陆不保存或保存第三方token)',
-	`salt` VARCHAR ( 255 ) NOT NULL DEFAULT '' COMMENT '密码盐，用于加密站内密码',
+	`certificate` VARCHAR ( 50 ) NOT NULL DEFAULT '' COMMENT '密码凭证(站内登陆保存密码，第三方登陆不保存或保存第三方token)',
+	`salt` VARCHAR ( 255 ) COMMENT '密码盐，用于加密站内密码',
 	PRIMARY KEY ( `id` ),
 	UNIQUE KEY `uniq_user_token_identity_type_identifier` (`identity_type`, `identifier`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='用户授权表';

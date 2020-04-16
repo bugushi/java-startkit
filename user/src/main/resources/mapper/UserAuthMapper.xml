@@ -43,7 +43,7 @@
     select id, user_id, identity_type, identifier, certificate, salt
     from user_auth
     where
-    identity_type = #{identityType,jdbcType=TINYINT},
-    identifier = #{identifier,jdbcType=VARCHAR}
+    identity_type = #{identityType,jdbcType=TINYINT}
+    and identifier = #{identifier,jdbcType=VARCHAR}
   </select>
 </mapper>

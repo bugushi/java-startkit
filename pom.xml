@@ -65,6 +65,7 @@
 
 			<properties> <!-- properties 里面可以添加自定义节点，如下添加了一个env节点 -->
 				<env>dev</env> <!-- 这个节点的值可以在maven的其他地方引用，可以简单理解为定义了一个叫env的变量 -->
+				<env>user-dev</env>
 			</properties>
 		</profile>
 
@@ -72,6 +73,7 @@
 			<id>test</id>
 			<properties>
 				<env>test</env>
+				<env>user-test</env>
 			</properties>
 		</profile>
 
@@ -79,6 +81,7 @@
 			<id>prod</id>
 			<properties>
 				<env>prod</env>
+				<env>user-prod</env>
 			</properties>
 		</profile>
 	</profiles>
